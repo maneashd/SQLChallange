@@ -57,3 +57,43 @@ ANS
 select city, length(city) from station order by length(city) DESC,city ASC fetch first row only;
 select city, length(city) from station order by length(city) asc ,city asc fetch first row only;      
 ==============================================
+Q11. Query the list of CITY names starting with vowels (i.e., a, e, i, o, or u) from STATION. Your result
+cannot contain duplicates.
+Input Format
+
+ANS
+select distinct (city)
+from station
+where city like 'A%' or city like 'E%' or city like 'I%' or city like 'O%' or city like 'U%'
+order by city;
+==============================================
+Q12. Query the list of CITY names ending with vowels (a, e, i, o, u) from STATION. Your result cannot
+contain duplicates.
+
+ANS
+select distinct (city)
+from station
+where city like '%A' or city like '%E' or city like '%I' or city like '%O' or city like '%U';
+==============================================
+Q13. Query the list of CITY names from STATION that do not start with vowels. Your result cannot
+contain duplicates.
+
+ANS
+select distinct city
+from station
+where 
+upper(substr(city,1,1)) not in ('a','e','i','o','u') 
+and 
+lower(substr(city,1,1)) not in ('a','e','i','o','u'); 
+===========================================
+Q15. Query the list of CITY names from STATION that either do not start with vowels or do not end
+with vowels. Your result cannot contain duplicates
+
+ANS
+select distinct city
+from station
+where 
+upper(substr(city,1,1)) not in ('a','e','i','o','u') 
+and 
+lower(substr(city,length(city),1)) not in ('a','e','i','o','u');
+===========================================
